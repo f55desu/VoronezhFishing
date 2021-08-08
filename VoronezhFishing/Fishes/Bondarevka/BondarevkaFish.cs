@@ -1,26 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using VoronezhFishing.Fishes;
 
 namespace VoronezhFishing.Fishes.Bondarevka
 {
-	abstract public class BondarevkaFish
-	{
-		public double Weight { get; set; }
-		public bool IsPredator { get; set; }
-		public string Name { get; }
-		public DateTime CatchingTime { get;}
 
-		public abstract void Catched();
-	}
-
-	public class Plotva : BondarevkaFish
+	public class Plotva : Fish
 	{
+		static double lowWeight = 50.0; // нижний предел веса рыбы (граммы)
+		static double highWeight = 800.0; // верхний предел веса рыбы (граммы)
+		public double Weight { get; } = GetFishWeight(lowWeight, highWeight); // вес рыбы
+		public bool IsPredator { get; } = false; // параметр определения хищника
+		public string Name { get; } = "Плотва"; // название вида рыба
+		public DateTime CatchingTime { get; } //
+
 		public override void Catched()
 		{
-			
+			throw new NotImplementedException();
+		}
+	}
+
+	public class Shyuka : Fish
+	{
+		static double lowWeight = 500.0; // нижний предел веса рыбы (граммы)
+		static double highWeight = 10000.0; // верхний предел веса рыбы (граммы)
+		public double Weight { get; } = GetFishWeight(lowWeight, highWeight); // вес рыбы
+		public bool IsPredator { get; } = true; // параметр определения хищника
+		public string Name { get; } = "Щука"; // название вида рыба
+		public DateTime CatchingTime { get; } //
+
+		public override void Catched()
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
